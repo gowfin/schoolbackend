@@ -39,12 +39,14 @@ app.use("/auth", require("./routes/authentication"));
 app.use("/",require("./routes/main"))
 app.use("/", require("./routes/video_route"));
 app.use("/", require("./routes/notice_route"));
+app.use("/", require("./routes/zoom_route"));
 
 
 app.listen(SERVER_PORT_NO,()=>console.log(`Server is running on port: ${SERVER_PORT_NO}`))
  const conn= async()=>{
-     await 
-Mongoose.connect(localmongodb || process.env.DATABASE_URI,{useNewUrlParser:true,useUnifiedTopology: true})
+     await
+// Mongoose.connect(localmongodb || process.env.DATABASE_URI,{useNewUrlParser:true,useUnifiedTopology: true})
+Mongoose.connect(process.env.DATABASE_URI,{useNewUrlParser:true,useUnifiedTopology: true})
 .then(()=>console.log("Database is connected"))
 .catch((err)=>console.log(err));
  }
